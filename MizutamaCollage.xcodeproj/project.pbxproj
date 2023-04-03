@@ -11,6 +11,7 @@
 		D626D7CC29DAEAFA009750CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7CB29DAEAFA009750CE /* ContentView.swift */; };
 		D626D7CE29DAEAFB009750CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D626D7CD29DAEAFB009750CE /* Assets.xcassets */; };
 		D626D7D129DAEAFB009750CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D626D7D029DAEAFB009750CE /* Preview Assets.xcassets */; };
+		D626D7D829DAF787009750CE /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7D729DAF787009750CE /* VideoCapture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		D626D7CB29DAEAFA009750CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D626D7CD29DAEAFB009750CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D626D7D029DAEAFB009750CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D626D7D729DAF787009750CE /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				D626D7CB29DAEAFA009750CE /* ContentView.swift */,
 				D626D7CD29DAEAFB009750CE /* Assets.xcassets */,
 				D626D7CF29DAEAFB009750CE /* Preview Content */,
+				D626D7D729DAF787009750CE /* VideoCapture.swift */,
 			);
 			path = MizutamaCollage;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D626D7CC29DAEAFA009750CE /* ContentView.swift in Sources */,
+				D626D7D829DAF787009750CE /* VideoCapture.swift in Sources */,
 				D626D7CA29DAEAFA009750CE /* MizutamaCollageApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +274,7 @@
 				DEVELOPMENT_TEAM = H2BRC2349A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "隠す対象の画像を取得するために許可が必要です。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +304,7 @@
 				DEVELOPMENT_TEAM = H2BRC2349A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "隠す対象の画像を取得するために許可が必要です。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
