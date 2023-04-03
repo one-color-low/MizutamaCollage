@@ -12,6 +12,8 @@
 		D626D7CE29DAEAFB009750CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D626D7CD29DAEAFB009750CE /* Assets.xcassets */; };
 		D626D7D129DAEAFB009750CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D626D7D029DAEAFB009750CE /* Preview Assets.xcassets */; };
 		D626D7D829DAF787009750CE /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7D729DAF787009750CE /* VideoCapture.swift */; };
+		D626D7DA29DB0604009750CE /* ImageButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7D929DB0604009750CE /* ImageButtonStyle.swift */; };
+		D626D7DC29DB1E96009750CE /* SettingModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7DB29DB1E96009750CE /* SettingModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		D626D7CD29DAEAFB009750CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D626D7D029DAEAFB009750CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D626D7D729DAF787009750CE /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		D626D7D929DB0604009750CE /* ImageButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonStyle.swift; sourceTree = "<group>"; };
+		D626D7DB29DB1E96009750CE /* SettingModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				D626D7CD29DAEAFB009750CE /* Assets.xcassets */,
 				D626D7CF29DAEAFB009750CE /* Preview Content */,
 				D626D7D729DAF787009750CE /* VideoCapture.swift */,
+				D626D7D929DB0604009750CE /* ImageButtonStyle.swift */,
+				D626D7DB29DB1E96009750CE /* SettingModalView.swift */,
 			);
 			path = MizutamaCollage;
 			sourceTree = "<group>";
@@ -141,8 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D626D7CC29DAEAFA009750CE /* ContentView.swift in Sources */,
+				D626D7DA29DB0604009750CE /* ImageButtonStyle.swift in Sources */,
 				D626D7D829DAF787009750CE /* VideoCapture.swift in Sources */,
 				D626D7CA29DAEAFA009750CE /* MizutamaCollageApp.swift in Sources */,
+				D626D7DC29DB1E96009750CE /* SettingModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

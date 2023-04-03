@@ -11,28 +11,103 @@ import AVFoundation
 struct ContentView: View {
     let videoCapture = VideoCapture()
     @State var image: UIImage? = nil
+    @State var isRunningCamera = false
+    @State var showingSettingModal = false
     var body: some View {
-        VStack {
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
+        VStack(alignment: .center) {
+            if isRunningCamera{
+                
+                if let image = image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 400)
+                        .border(Color.blue, width: 2)
+                }else{
+                    // 画像が無い場合
+                    Text("画像が取得できません。カメラのプライバシー設定を確認してください。")
+                        .frame(width: 200, height: 400)
+                        .border(Color.blue, width: 2)
+                }
+                
+            }else{
+                // 撮影が開始されていない場合
+                Text("撮影を開始するには「Run」ボタンをタップします。")
+                    .frame(width: 200, height: 400)
+                    .border(Color.blue, width: 2)
             }
-            HStack {
-                Button("run") {
-                    videoCapture.run { sampleBuffer in
-                        if let convertImage = UIImageFromSampleBuffer(sampleBuffer) {
-                            DispatchQueue.main.async {
-                                self.image = convertImage
+
+            
+            HStack(alignment: .bottom) {
+                
+                // 左
+                Button(action: {print("album button tapped.")}){
+                    if !isRunningCamera{
+                        if let image = image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                        }else{
+                            // 初期状態
+                            Image(systemName: "rectangle.portrait.fill")
+                                .font(.system(size: 50))
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(Color.black)
+                        }
+                    }else{
+                        Image(systemName: "rectangle.portrait.fill")
+                            .font(.system(size: 50))
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.black)
+                    }
+                }
+                
+                Spacer()
+                
+                // 中央
+                if !isRunningCamera{
+                    Button("Run") {
+                        isRunningCamera = true
+                        videoCapture.run { sampleBuffer in
+                            if let convertImage = UIImageFromSampleBuffer(sampleBuffer) {
+                                DispatchQueue.main.async {
+                                    self.image = convertImage
+                                }
                             }
                         }
                     }
+                    .font(.system(size: 50))
+                    .foregroundColor(Color.white)
+                }else{
+                    Button("Stop") {
+                        isRunningCamera = false
+                        videoCapture.stop()
+                    }
+                    .font(.system(size: 50))
+                    .foregroundColor(Color.white)
                 }
-                Button("stop") {
-                    videoCapture.stop()
+                
+                Spacer()
+                
+                // 右
+                Button(action: {
+                    showingSettingModal = true
+                    print("setting button tapped.")
+                }){
+                    Image(systemName: "slider.horizontal.3")
+                        .font(.system(size: 50))
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(Color.white)
                 }
+                
             }
-            .font(.largeTitle)
+            .background(Color.gray)
+            .frame(height: 100)
+        }
+        
+        .sheet(isPresented: $showingSettingModal) {
+            SettingModalView()
         }
     }
 
