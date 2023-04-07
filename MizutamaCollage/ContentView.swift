@@ -28,13 +28,15 @@ struct ContentView: View {
                 }else{
                     // 画像が無い場合
                     Text("画像が取得できません。カメラのプライバシー設定を確認してください。")
+                        .padding()
                         .frame(width: 200, height: 400)
                         .border(Color.blue, width: 2)
                 }
                 
             }else{
                 // 撮影が開始されていない場合
-                Text("撮影を開始するには「Run」ボタンをタップします。")
+                Text("撮影を開始するには「○」ボタンをタップします。")
+                    .padding() // .frameの前にある必要あり
                     .frame(width: 200, height: 400)
                     .border(Color.blue, width: 2)
             }
