@@ -14,6 +14,7 @@
 		D626D7D829DAF787009750CE /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7D729DAF787009750CE /* VideoCapture.swift */; };
 		D626D7DA29DB0604009750CE /* ImageButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7D929DB0604009750CE /* ImageButtonStyle.swift */; };
 		D626D7DC29DB1E96009750CE /* SettingModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7DB29DB1E96009750CE /* SettingModalView.swift */; };
+		D626D7DE29DC90F2009750CE /* AnimationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626D7DD29DC90F2009750CE /* AnimationButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		D626D7D729DAF787009750CE /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		D626D7D929DB0604009750CE /* ImageButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonStyle.swift; sourceTree = "<group>"; };
 		D626D7DB29DB1E96009750CE /* SettingModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModalView.swift; sourceTree = "<group>"; };
+		D626D7DD29DC90F2009750CE /* AnimationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				D626D7D729DAF787009750CE /* VideoCapture.swift */,
 				D626D7D929DB0604009750CE /* ImageButtonStyle.swift */,
 				D626D7DB29DB1E96009750CE /* SettingModalView.swift */,
+				D626D7DD29DC90F2009750CE /* AnimationButtonStyle.swift */,
 			);
 			path = MizutamaCollage;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D626D7DE29DC90F2009750CE /* AnimationButtonStyle.swift in Sources */,
 				D626D7CC29DAEAFA009750CE /* ContentView.swift in Sources */,
 				D626D7DA29DB0604009750CE /* ImageButtonStyle.swift in Sources */,
 				D626D7D829DAF787009750CE /* VideoCapture.swift in Sources */,

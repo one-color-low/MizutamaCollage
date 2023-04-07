@@ -14,7 +14,9 @@ struct ContentView: View {
     @State var isRunningCamera = false
     @State var showingSettingModal = false
     var body: some View {
+        
         VStack(alignment: .center) {
+            
             if isRunningCamera{
                 
                 if let image = image {
@@ -36,38 +38,46 @@ struct ContentView: View {
                     .frame(width: 200, height: 400)
                     .border(Color.blue, width: 2)
             }
-
             
-            HStack(alignment: .bottom) {
+            
+            HStack(alignment: .center) {
+                
+                // 3分割した領域を作成
+                // その領域に各種ボタンを配置
                 
                 // 左
-                Button(action: {print("album button tapped.")}){
-                    if !isRunningCamera{
-                        if let image = image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 80, height: 80)
+                Button(
+                    action: {
+                        print("album button tapped.")
+                    },
+                    label: {
+                        if !isRunningCamera{
+                            if let image = image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 80, height: 80)
+                            }else{
+                                // 初期状態
+                                Image(systemName: "rectangle.portrait.fill")
+                                    .font(.system(size: 50))
+                                    .frame(width: 80, height: 80)
+                                    .foregroundColor(Color.black)
+                            }
                         }else{
-                            // 初期状態
                             Image(systemName: "rectangle.portrait.fill")
                                 .font(.system(size: 50))
                                 .frame(width: 80, height: 80)
                                 .foregroundColor(Color.black)
                         }
-                    }else{
-                        Image(systemName: "rectangle.portrait.fill")
-                            .font(.system(size: 50))
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(Color.black)
                     }
-                }
-                
-                Spacer()
+                )
+                .frame(width: 120, alignment: .center)
                 
                 // 中央
-                if !isRunningCamera{
-                    Button("Run") {
+                
+                Button(
+                    action: {
                         isRunningCamera = true
                         videoCapture.run { sampleBuffer in
                             if let convertImage = UIImageFromSampleBuffer(sampleBuffer) {
@@ -76,41 +86,44 @@ struct ContentView: View {
                                 }
                             }
                         }
+                    },
+                    label: {
+                        Image(systemName: "circle.fill")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color.white)
+                            .frame(alignment: .center)
                     }
-                    .font(.system(size: 50))
-                    .foregroundColor(Color.white)
-                }else{
-                    Button("Stop") {
-                        isRunningCamera = false
-                        videoCapture.stop()
-                    }
-                    .font(.system(size: 50))
-                    .foregroundColor(Color.white)
-                }
-                
-                Spacer()
+                )
+                .buttonStyle(AnimationButtonStyle())
+                .frame(width: 120, alignment: .center)
                 
                 // 右
-                Button(action: {
-                    showingSettingModal = true
-                    print("setting button tapped.")
-                }){
-                    Image(systemName: "slider.horizontal.3")
-                        .font(.system(size: 50))
-                        .frame(width: 50, height: 50)
-                        .foregroundColor(Color.white)
-                }
+                Button(
+                    action: {
+                        showingSettingModal = true
+                        print("setting button tapped.")
+                    },
+                    label: {
+                        Image(systemName: "slider.horizontal.3")
+                            .font(.system(size: 50))
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(Color.white)
+                            .frame(alignment: .center)
+                    }
+                )
+                .frame(width: 120, alignment: .center)
                 
             }
             .background(Color.gray)
-            .frame(height: 100)
+            .frame(height: 100, alignment: .center)
+            
         }
         
         .sheet(isPresented: $showingSettingModal) {
             SettingModalView()
         }
     }
-
+    
     func UIImageFromSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> UIImage? {
         if let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
             let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
@@ -122,7 +135,7 @@ struct ContentView: View {
         }
         return nil
     }
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
