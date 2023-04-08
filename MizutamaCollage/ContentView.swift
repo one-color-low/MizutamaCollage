@@ -23,13 +23,13 @@ struct ContentView: View {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 200, height: 400)
+                        .frame(width: 300, height: 600)
                         .border(Color.blue, width: 2)
                 }else{
                     // 画像が無い場合
                     Text("画像が取得できません。カメラのプライバシー設定を確認してください。")
                         .padding()
-                        .frame(width: 200, height: 400)
+                        .frame(width: 300, height: 600)
                         .border(Color.blue, width: 2)
                 }
                 
@@ -37,7 +37,7 @@ struct ContentView: View {
                 // 撮影が開始されていない場合
                 Text("撮影を開始するには「○」ボタンをタップします。")
                     .padding() // .frameの前にある必要あり
-                    .frame(width: 200, height: 400)
+                    .frame(width: 300, height: 600)
                     .border(Color.blue, width: 2)
             }
             
@@ -55,22 +55,40 @@ struct ContentView: View {
                     label: {
                         if !isRunningCamera{
                             if let image = image { // 最後に撮影した画像を表示
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2)
+                                        .fill(Color.gray)
+                                        .frame(width: 42, height: 62)
+                                    
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .frame(width: 40, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
                             }else{
-                                // 初期状態
-                                Image(systemName: "rectangle.portrait.fill")
-                                    .font(.system(size: 50))
-                                    .frame(width: 80, height: 80)
-                                    .foregroundColor(Color.black)
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2)
+                                        .fill(Color.gray)
+                                        .frame(width: 42, height: 62)
+                                    
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.black)
+                                        .frame(width: 40, height: 60)
+                                }
                             }
                         }else{
-                            Image(systemName: "rectangle.portrait.fill")
-                                .font(.system(size: 50))
-                                .frame(width: 80, height: 80)
-                                .foregroundColor(Color.black)
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 2)
+                                    .fill(Color.gray)
+                                    .frame(width: 42, height: 62)
+                                
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black)
+                                    .frame(width: 40, height: 60)
+                            }
                         }
                     }
                 )
@@ -83,12 +101,16 @@ struct ContentView: View {
                         withAnimation{
                             isRunningCamera.toggle()
                         }
-                        videoCapture.run { sampleBuffer in
-                            if let convertImage = UIImageFromSampleBuffer(sampleBuffer) {
-                                DispatchQueue.main.async {
-                                    self.image = convertImage
+                        if isRunningCamera{
+                            videoCapture.run { sampleBuffer in
+                                if let convertImage = UIImageFromSampleBuffer(sampleBuffer) {
+                                    DispatchQueue.main.async {
+                                        self.image = convertImage
+                                    }
                                 }
                             }
+                        }else{
+                            videoCapture.stop()
                         }
                     },
                     label: {
@@ -131,8 +153,7 @@ struct ContentView: View {
                 .frame(width: 120, alignment: .center)
                 
             }
-            .background(Color.gray)
-            .frame(height: 100, alignment: .center)
+            .frame(height: 150, alignment: .center)
             
         }
         
