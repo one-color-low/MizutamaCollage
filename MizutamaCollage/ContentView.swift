@@ -54,7 +54,7 @@ struct ContentView: View {
                     },
                     label: {
                         if !isRunningCamera{
-                            if let image = image {
+                            if let image = image { // 最後に撮影した画像を表示
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFit()
@@ -80,7 +80,9 @@ struct ContentView: View {
                 
                 Button(
                     action: {
-                        isRunningCamera = true
+                        withAnimation{
+                            isRunningCamera.toggle()
+                        }
                         videoCapture.run { sampleBuffer in
                             if let convertImage = UIImageFromSampleBuffer(sampleBuffer) {
                                 DispatchQueue.main.async {
@@ -90,13 +92,26 @@ struct ContentView: View {
                         }
                     },
                     label: {
-                        Image(systemName: "circle.fill")
-                            .font(.system(size: 30))
-                            .foregroundColor(Color.white)
-                            .frame(alignment: .center)
+                        ZStack{
+                            
+                            Circle()
+                                .stroke(lineWidth: 5)
+                                .foregroundColor(Color.white)
+                                .frame(width: 70, height: 70)
+                            
+                            if isRunningCamera{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.red)
+                                    .frame(width: 40, height: 40)
+                            } else {
+                                Circle()
+                                    .fill(Color.red)
+                                    .frame(width: 60, height: 60)
+                            }
+                        }
                     }
                 )
-                .buttonStyle(AnimationButtonStyle())
+//                .buttonStyle(AnimationButtonStyle())
                 .frame(width: 120, alignment: .center)
                 
                 // 右
